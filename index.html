@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Status Funtime Trees</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>    
+
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+	<script type="text/javascript" src="js/jquery.wz_jsgraphics.js"></script>
+	<script type="text/javascript" src="js/arrowsandboxes.js"></script>
+	<script type="text/javascript" src="status-tree.js"></script>
+		
+	<link type="text/css" rel="stylesheet" href="style/arrowsandboxes.css">		
+	</head>
+	<style>
+		body {
+			font-family: Verdana, Arial, Helvetica, sans-serif;
+		}
+	</style>
+	<body>
+<div class="container theme-showcase" id="status-fun">
+	<header>
+		<h1 id="title">Status Funtrees</h1>
+		<ul class="nav navbar-nav" id="the-nav">
+			<li><strong>Position: </strong>
+				<select id="select-position">
+					<option value="">--Select--</option>
+					<option value="prince">Prince</option>
+					<option value="seneschal">Seneschal</option>
+					<option value="primogen">Primogen/Whip</option>
+					<option value="harpy">Harpy/Lesser Harpy</option>
+					<option value="keeper">Keeper of Elysium</option>
+					<option value="sheriff">Sheriff</option>
+					<option value="scourge">Scourge</option>
+					<option value="elder">Elder</option>
+					<option value="ancilla">Ancilla</option>
+				</select>
+			</li>
+			<li><strong>Status: </strong>
+				<select id="select-status">
+					<option value="">--Select--</option>
+					<option value="authority">Authority (abiding)</option>
+					<option value="sovereign">Sovereign (abiding)</option>2
+				</select>
+			</li>
+		</ul>
+	</header>
+	<div id="prince" class="chart-boxer">
+		<pre class="arrows-and-boxes">
+		() () (auth1{status}:{{<a href="#authority">Authority</a>}}) 	||
+		((Prince  >gains [auth1, comm1, sove1] >grants [ackn1])) () (comm1{status}:{{<a href="#commander">Commander</a>}})   ||
+		(ackn1{status}:Acknowledged) ()  (sove1{status}:{{<a href="#sovereign">Sovereign</a>}})
+		</pre>
+	</div>
+
+	<div id="seneschal" class="chart-boxer">
+		<pre class="arrows-and-boxes">
+		() (noble2{status}: {{<a href="#noble">Noble</a>}}) ||
+		((Seneschal  -gains [noble2] -gains when Prince is absent [auth2])) ||
+		() (auth2{status}:{{<a href="#authority">Authority</a>}})
+		</pre>
+	</div>
+
+	<div id="primogen" class="chart-boxer">
+		<pre class="arrows-and-boxes">
+		((Primogen  -gains [noble3])) () (noble3{status}: {{<a href="#noble">Noble</a>}}) ||
+		((Whip -gains when|Primogen|is absent [noble4])) () (noble4{status}:{{<a href="#noble">Noble</a>}})
+		</pre>
+	</div>
+
+	<div id="harpy" class="chart-boxer">
+		<pre class="arrows-and-boxes">
+		() (prom6{status}:{{<a href="#prominent">Prominent</a>}}) ||
+		((Harpy  -gains [prom6, noble6, guar6])) (noble6{status}:{{<a href="#noble">Noble</a>}}) ||
+		() (guar6{status}:{{<a href="#guardian">Guardian</a>}})  || 
+		((Lesser Harpy >gains when|Master Harpy|is absent [guar7])) () (guar7{status}:{{<a href="#guardian">Guardian</a>}})
+		</pre>
+	</div>
+
+	<div id="keeper" class="chart-boxer">
+		<pre class="arrows-and-boxes">
+		() ((Keeper of Elysium  -gains [enfo8, guar8])) ||
+		(enfo8{status}:{{<a href="#enforcer">Enforcer</a>}}) () (guar8{status}:{{<a href="#guardian">Guardian</a>}})
+		</pre>
+	</div>
+
+	<div id="sheriff" class="chart-boxer">
+		<pre class="arrows-and-boxes">
+		() ((Sheriff  -gains [enfo9, priv9])) ||
+		(enfo9{status}:{{<a href="#enforcer">Enforcer</a>}}) () (priv9{status}:{{<a href="#priveleged">Priveleged</a>}})
+		</pre>
+	</div>
+
+	<div id="scourge" class="chart-boxer">
+		<pre class="arrows-and-boxes">
+		() ((Scourge  -gains [enfo10])) ||
+		() (enfo10{status}:{{<a href="#enforcer">Enforcer</a>}})
+		</pre>
+	</div>
+
+	<div id="guardian" class="chart-boxer">
+		<pre class="arrows-and-boxes">
+		() ({status}:{{<a name="guardian">Guardian</a>}}  >awards [warn1] >is spent to award [disg1])) ||
+		(warn1{negative}:Warned) () (disg1{negative}:Disgraced)
+		</pre>
+	</div>
+
+	<div id="noble" class="chart-boxer">
+		<pre class="arrows-and-boxes">
+		() ({status}:{{<a name="noble">Noble</a>}}  >awards [accl1, loya1] >is spent to award [vulg1])) ||
+		(accl1{status}:Acclaimed|Fleeting) (loya1{status}:Loyal|Fleeting) (vulg1{negative}:Vulgar)
+		</pre>
+	</div>
+
+	<div id="priveleged" class="chart-boxer">
+		<pre class="arrows-and-boxes">
+		() ({status}:{{<a name="priveleged">Priveleged</a>}} >is spent to award [vulg1])) ||
+		() (vulg1{negative}:Vulgar)
+		</pre>
+	</div>
+
+	<div id="sovereign" class="chart-boxer">
+		<pre class="arrows-and-boxes">
+		() ({status}:{{<a name="sovereign">Sovereign</a>}}  >awards [cour2, enfoZ, loya2] >is spent to award [sanc2, hunt2])) () (hunt2{negative}:Blood Hunted|Not a status, technically) ||
+		(cour2{status}:Courteous|Fleeting) (enfoZ{status}:Enforcer??|Fleeting??)
+			(loya2{status}:Loyal|Fleeting) (sanc2{negative}:Sanctioned)
+		</pre>
+	</div>
+
+	<div id="authority" class="chart-boxer">
+		<pre class="arrows-and-boxes">
+		(cour3{status}:Courteous|Fleeting) ({status}:{{<a name="authority">Authority</a>}} >awards [cour3, defe3, hono3, loya3] >spent to give or remove [warn3,fors3]) () (fors3{negative}:Forsaken)||
+		(defe3{status}:Defender|Fleeting)  (hono3{status}:Honorable|Fleeting) (loya3{status}:Loyal|Fleeting) (warn3{negative}:Warned)
+		</pre>
+	</div>
+</div>
+</body>
+</html>
