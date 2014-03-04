@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Wanna help? https://github.com/mistergone/vtm-status-trees -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -11,7 +12,7 @@
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    <!--[if lt IE ]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -25,7 +26,8 @@
 	<script type="text/javascript" src="js/arrowsandboxes.js"></script>
 	<script type="text/javascript" src="status-tree.js"></script>
 		
-	<link type="text/css" rel="stylesheet" href="style/arrowsandboxes.css">		
+	<link type="text/css" rel="stylesheet" href="style/arrowsandboxes.css">
+	<link type="text/css" rel="stylesheet" href="status-tree.css">			
 	</head>
 	<style>
 		body {
@@ -55,99 +57,145 @@
 				<select id="select-status">
 					<option value="">--Select--</option>
 					<option value="authority">Authority (abiding)</option>
-					<option value="sovereign">Sovereign (abiding)</option>2
+					<option value="guardian">Guardian (abiding)</option>
+					<option value="noble">Noble (abiding)</option>
+					<option value="priveleged">Priveleged (abiding)</option>
+					<option value="sovereign">Sovereign (abiding)</option>
 				</select>
 			</li>
 		</ul>
 	</header>
 	<div id="prince" class="chart-boxer">
+		<h2>Prince</h2>
 		<pre class="arrows-and-boxes">
-		() () (auth1{status}:{{<a href="#authority">Authority</a>}}) 	||
-		((Prince  >gains [auth1, comm1, sove1] >grants [ackn1])) () (comm1{status}:{{<a href="#commander">Commander</a>}})   ||
-		(ackn1{status}:Acknowledged) ()  (sove1{status}:{{<a href="#sovereign">Sovereign</a>}})
+		() () (auth{status}:{{<a class="redraw" href="#authority">Authority</a>}}) 	||
+		((Prince  >gains [auth, comm, sove] >grants [ackn])) () (comm{status}:{{<a class="redraw" href="#commander">Commander</a>}})   ||
+		(ackn{status}:Acknowledged) ()  (sove{status}:{{<a class="redraw" href="#sovereign">Sovereign</a>}})
 		</pre>
 	</div>
 
 	<div id="seneschal" class="chart-boxer">
+		<h2>Seneschal</h2>
 		<pre class="arrows-and-boxes">
-		() (noble2{status}: {{<a href="#noble">Noble</a>}}) ||
-		((Seneschal  -gains [noble2] -gains when Prince is absent [auth2])) ||
-		() (auth2{status}:{{<a href="#authority">Authority</a>}})
+		() (noble{status}: {{<a class="redraw" href="#noble">Noble</a>}}) ||
+		((Seneschal  >gains [noble] >gains when Prince is absent [auth])) ||
+		() (auth{status}:{{<a class="redraw" href="#authority">Authority</a>}})
 		</pre>
 	</div>
 
 	<div id="primogen" class="chart-boxer">
+		<h2>Primogen</h2>
 		<pre class="arrows-and-boxes">
-		((Primogen  -gains [noble3])) () (noble3{status}: {{<a href="#noble">Noble</a>}}) ||
-		((Whip -gains when|Primogen|is absent [noble4])) () (noble4{status}:{{<a href="#noble">Noble</a>}})
+		((Primogen  >gains [noble])) ||
+		() (noble{status}: {{<a class="redraw" href="#noble">Noble</a>}}) ||
+		((Whip >gains when|Primogen|is absent [noble])) 
 		</pre>
 	</div>
 
 	<div id="harpy" class="chart-boxer">
+		<h2>Harpy</h2>
 		<pre class="arrows-and-boxes">
-		() (prom6{status}:{{<a href="#prominent">Prominent</a>}}) ||
-		((Harpy  -gains [prom6, noble6, guar6])) (noble6{status}:{{<a href="#noble">Noble</a>}}) ||
-		() (guar6{status}:{{<a href="#guardian">Guardian</a>}})  || 
-		((Lesser Harpy >gains when|Master Harpy|is absent [guar7])) () (guar7{status}:{{<a href="#guardian">Guardian</a>}})
+		() (prom{status}:{{<a class="redraw" href="#prominent">Prominent</a>}}) ||
+		((Harpy  >gains [prom, noble, guar])) (noble{status}:{{<a class="redraw" href="#noble">Noble</a>}}) ||
+		() (guar{status}:{{<a class="redraw" href="#guardian">Guardian</a>}})  || 
+		((Lesser Harpy >gains when|Master Harpy|is absent [guar]))
 		</pre>
 	</div>
 
 	<div id="keeper" class="chart-boxer">
+		<h2>Keeper of Elysium</h2>
 		<pre class="arrows-and-boxes">
-		() ((Keeper of Elysium  -gains [enfo8, guar8])) ||
-		(enfo8{status}:{{<a href="#enforcer">Enforcer</a>}}) () (guar8{status}:{{<a href="#guardian">Guardian</a>}})
+		() (enfo{status}:{{<a class="redraw" href="#enforcer">Enforcer</a>}}) ||
+		((Keeper of Elysium  >gains [enfo, guar])) ||
+		() (guar{status}:{{<a class="redraw" href="#guardian">Guardian</a>}})
 		</pre>
 	</div>
 
 	<div id="sheriff" class="chart-boxer">
+		<h2>Sheriff</h2>
 		<pre class="arrows-and-boxes">
-		() ((Sheriff  -gains [enfo9, priv9])) ||
-		(enfo9{status}:{{<a href="#enforcer">Enforcer</a>}}) () (priv9{status}:{{<a href="#priveleged">Priveleged</a>}})
+		() (enfo{status}:{{<a class="redraw" href="#enforcer">Enforcer</a>}}) ||
+		((Sheriff  >gains [enfo, priv])) ||
+	 	() (priv{status}:{{<a class="redraw" href="#priveleged">Priveleged</a>}})
 		</pre>
 	</div>
 
 	<div id="scourge" class="chart-boxer">
+		<h2>Scourge</h2>
 		<pre class="arrows-and-boxes">
-		() ((Scourge  -gains [enfo10])) ||
-		() (enfo10{status}:{{<a href="#enforcer">Enforcer</a>}})
+		((Scourge)) >gains ({status}:{{<a class="redraw" href="#enforcer">Enforcer</a>}})
+		</pre>
+	</div>
+
+	<div id="elder" class="chart-boxer">
+		<h2>Elder</h2>
+		<pre class="arrows-and-boxes">
+			() (conf{status}:{{<a class="redraw" href="#confirmed">Confirmed</a>}}) ||
+			((Elder >gains [conf, priv, esta])) (esta{status}:{{<a class="redraw" href="#enforcer">Established</a>}}) ||
+			() (priv{status}:{{<a class="redraw" href="#priveleged">Priveleged</a>}})
+		</pre>
+	</div>
+
+	<div id="ancilla" class="chart-boxer">
+		<h2>Ancilla</h2>
+		<pre class="arrows-and-boxes">
+			((Ancilla >gains [conf])) (conf{status}:{{<a class="redraw" href="#confirmed">Confirmed</a>}})
+		</pre>
+	</div>
+
+	<!-- BEGIN STATUS SECTION -->
+
+	<div id="authority" class="chart-boxer">
+		<h2>Authority (abiding)</h2>
+		<pre class="arrows-and-boxes">
+			(({{<a class="redraw" href="#prince">Prince</a>}} >gains [auth])) () (defe{status}:Defender|Fleeting) (cour{status}:Courteous|Fleeting) ||
+			() () () (loya{status}:Loyal|Fleeting) ||
+			() (auth{status}:Authority >awards [cour,defe,hono,loya] > |spent|to give|or remove [warn,fors]) () (hono{status}:Honorable|Fleeting) ||
+			() () ()  ||
+			(({{<a class="redraw" href="#seneschal">Seneschal</a>}} >gains when|Prince is|absent [auth])) () (warn{negative}:Warned) (fors{negative}:Forsaken)
 		</pre>
 	</div>
 
 	<div id="guardian" class="chart-boxer">
+		<h2>Guardian (abiding)</h2>
 		<pre class="arrows-and-boxes">
-		() ({status}:{{<a name="guardian">Guardian</a>}}  >awards [warn1] >is spent to award [disg1])) ||
-		(warn1{negative}:Warned) () (disg1{negative}:Disgraced)
+			(({{<a href="#harpy">Harpy</a>}} >gains [guar])) () (warn{negative}:Warned)||
+			(({{<a href="#harpy">Lesser Harpy</a>}} >gains [guar])) ((guar{status}:{{<a class="redraw" href="#guardian">Guardian</a>}}  >awards [warn] >is spent to award [disg])) ||
+			(({{<a href="#keeper">Keeper of Elysium</a>}} >gains [guar])) () (disg{negative}:Disgraced)||
 		</pre>
 	</div>
 
 	<div id="noble" class="chart-boxer">
+		<h2>Noble (abiding)</h2>
 		<pre class="arrows-and-boxes">
-		() ({status}:{{<a name="noble">Noble</a>}}  >awards [accl1, loya1] >is spent to award [vulg1])) ||
-		(accl1{status}:Acclaimed|Fleeting) (loya1{status}:Loyal|Fleeting) (vulg1{negative}:Vulgar)
+		(({{<a class="redraw" href="#seneschal">Seneschal</a>}} >gains [noble])) () (accl{status}:Acclaimed|Fleeting)||
+		(({{<a class="redraw" href="#primogen">Primogen</a>}} >gains [noble])) (noble{status}:{{<a class="redraw" href="#noble">Noble</a>}}  >awards [accl, loya] >is spent to award [vulg])) (loya{status}:Loyal|Fleeting)||
+		(({{<a class="redraw" href="#harpy">Harpy</a>}} >gains [noble])) () (vulg{negative}:Vulgar) ||
 		</pre>
 	</div>
 
 	<div id="priveleged" class="chart-boxer">
+		<h2>Priveleged (abiding)</h2>
 		<pre class="arrows-and-boxes">
-		() ({status}:{{<a name="priveleged">Priveleged</a>}} >is spent to award [vulg1])) ||
-		() (vulg1{negative}:Vulgar)
+			(({{<a class="redraw" href="#elder">Elder</a>}} >gains [priv])) ||
+			() (priv{status}:{{<a class="redraw" href="#priveleged">Priveleged</a>}} >is spent|to award [vulg])) (vulg{negative}:Vulgar) ||
+			(({{<a class="redraw" href="#sheriff">Sheriff</a>}} >gains [priv]))
 		</pre>
 	</div>
 
 	<div id="sovereign" class="chart-boxer">
+		<h2>Sovereign (abiding)</h2>
 		<pre class="arrows-and-boxes">
-		() ({status}:{{<a name="sovereign">Sovereign</a>}}  >awards [cour2, enfoZ, loya2] >is spent to award [sanc2, hunt2])) () (hunt2{negative}:Blood Hunted|Not a status, technically) ||
-		(cour2{status}:Courteous|Fleeting) (enfoZ{status}:Enforcer??|Fleeting??)
-			(loya2{status}:Loyal|Fleeting) (sanc2{negative}:Sanctioned)
+		() () (cour{status}:Courteous|Fleeting) ||
+		() () (enfo{status}:Enforcer??|Fleeting??) ||
+		(({{<a class="redraw" href="#prince">Prince</a>}} >gains [sove])) (sove{status}:{{<a class="redraw" href="#sovereign">Sovereign</a>}}  >awards [cour, enfo, loya] >is spent to award [sanc, hunt]) (loya{status}:Loyal|Fleeting) ||
+		() () (sanc{negative}:Sanctioned) ||
+		()  (hunt{negative}:Blood Hunted|Not a status, technically)
+
+		
 		</pre>
 	</div>
 
-	<div id="authority" class="chart-boxer">
-		<pre class="arrows-and-boxes">
-		(cour3{status}:Courteous|Fleeting) ({status}:{{<a name="authority">Authority</a>}} >awards [cour3, defe3, hono3, loya3] >spent to give or remove [warn3,fors3]) () (fors3{negative}:Forsaken)||
-		(defe3{status}:Defender|Fleeting)  (hono3{status}:Honorable|Fleeting) (loya3{status}:Loyal|Fleeting) (warn3{negative}:Warned)
-		</pre>
-	</div>
 </div>
 </body>
 </html>
