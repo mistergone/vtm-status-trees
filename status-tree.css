@@ -1,0 +1,34 @@
+.arrowsandboxes-graph-wrapper {
+	overflow: hidden;
+}
+
+#title {
+	margin: 1em auto;
+	text-align: center;
+}
+
+header {
+	height: 10em;
+}
+
+#the-nav li {
+	margin-left: 2em;
+	margin-top: 1em;
+}
+
+#status-fun div.negative,
+#status-fun div.negative .arrowsandboxes-node-title {
+	background-color: #ffbbea;
+	border-color: #f155b1;	
+}
+
+#status-fun div.status,
+#status-fun div.status .arrowsandboxes-node-title {
+	background-color: #bbffea;
+	border-color: #55f1b1;	
+}
+
+#status-fun .chart-boxer {
+	margin: 1em auto 1em 3em;
+	display: none;
+}
