@@ -1,3 +1,8 @@
+h1. This project uses Arrows-and-boxes!
+
+So here's the Arrows-and-boxes README
+
+
 h2. Arrows-and-boxes
 
 h3. About
