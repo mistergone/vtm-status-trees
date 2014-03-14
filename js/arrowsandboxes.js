@@ -820,7 +820,7 @@
 
 			el.addClass(cssclass("source"));
 			drawStructure(graph_wrapper, buildStructureFromLines(source.split('||')));
-			el.before(poweredBy(escape(el.html())));
+			// el.before(poweredBy(escape(el.html())));
 			$(el.parent()).hover(
 				function(){ $(this).addClass(cssclass("wrapper-hovered")); },
 				function(){ $(this).removeClass(cssclass("wrapper-hovered")); }

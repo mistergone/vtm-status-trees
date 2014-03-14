@@ -1,3 +1,12 @@
+#the-canvas {
+
+}
+
+#the-canvas .item-box {
+	position: absolute; left: 0px; top: 0px; height: 150px; width: 100px;
+}
+
+
 .arrowsandboxes-graph-wrapper {
 	overflow: hidden;
 }
@@ -17,15 +26,17 @@ header {
 }
 
 #status-fun div.negative,
-#status-fun div.negative .arrowsandboxes-node-title {
+#status-fun div.negative .arrowsandboxes-node-title,
+#status-fun div.negative .arrowsandboxes-node-subtitle {
 	background-color: #ffbbea;
 	border-color: #f155b1;	
 }
 
 #status-fun div.status,
-#status-fun div.status .arrowsandboxes-node-title {
-	background-color: #bbffea;
-	border-color: #55f1b1;	
+#status-fun div.status .arrowsandboxes-node-title,
+#status-fun div.status .arrowsandboxes-node-subtitle {
+	background-color: #aaffaa;
+	border-color: #55f191;	
 }
 
 #status-fun .chart-boxer {

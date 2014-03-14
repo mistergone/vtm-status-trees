@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
     $('select').change(function() {
         var value = $(this).find('option:selected').val();
@@ -10,10 +9,11 @@ $(document).ready(function() {
     });
     $('a.redraw').click(function(event) {
         var href = $(this).attr('href');
+        $('select').each(function(i, val) {
+            $(this).prop('selectedIndex',0);
+        });
         //!!!!! code to determine id and set select default
-        if ( true ) {
-            $('.chart-boxer:visible').hide();
-            $(href).show();
-        }    	
+        $('.chart-boxer:visible').hide();
+        $(href).show();
     });
 });
